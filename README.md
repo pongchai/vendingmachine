@@ -1,2 +1,1 @@
-# vendingmachine
-Software Engineering Class Vending Machine API 
+## About the Project
