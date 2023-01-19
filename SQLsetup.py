@@ -1,41 +1,19 @@
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker
-# from sqlalchemy_utils import database_exists, create_database
-# from local_settings import postgresql as settings
-#
-#
-# def get_engine(user,passwd, host, port ,db):
-#     url = f"postgresql://{user}:{passwd}@{host}:{port}/{db}"
-#     if not database_exists(url):
-#         create_database(url)
-#     engine = create_engine(url, pool_size=50, echo=False)
-#     return engine
-#
-#
-# engine = get_engine(settings['pguser'],
-#                     settings['pgpasswd'],
-#                     settings['pghost'],
-#                     settings['pgport'],
-#                     settings['pgdb'])
-# print(engine.url)
-#
-#
-# def get_engine_from_settings():
-#     keys = ['pguser', 'pgpassword', 'pghost','pgport', 'pgdb']
-#     if not all(key in keys for key in settings.keys()):
-#         raise Exception('Bad config  file')
-#     return get_engine(settings['pguser'],
-#                     settings['pgpasswd'],
-#                     settings['pghost'],
-#                     settings['pgport'],
-#                     settings['pgdb'])
-#
-# def get_session():
-#     engine=get_engine_from_settings()
-#     session = sessionmaker(bind=engine)()
-#     return session
-#
-#
-# session = get_session()
-#
-# session
+# .tables
+# .schema vending_machine
+# CREATE TABLE vending_machine (
+#         id INTEGER NOT NULL,
+#         name VARCHAR(50),
+#         location VARCHAR(50),
+#         PRIMARY KEY (id)
+# );
+# .schema item
+# CREATE TABLE item (
+#         id INTEGER NOT NULL,
+#         name VARCHAR(50),
+#         price FLOAT,
+#         quantity INTEGER,
+#         vending_machine_id INTEGER,
+#         FOREIGN KEY(vending_machine_id) REFERENCES vending_machine (id),
+#         PRIMARY KEY (id)
+# );
+# INSERT INTO item (name, price,quantity,vending_machine_id) VALUES ('item1', 2.5, 10,1)
