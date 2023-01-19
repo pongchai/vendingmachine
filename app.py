@@ -92,6 +92,25 @@ def edit_item_stock(vm_id, item_id):
         return jsonify({'message': 'Vending Machine not found'}), 404
 
 
+@app.route('/remove_item_from_stock/<int:vm_id>/<int:item_id>', methods=['PUT'])
+def remove_item_from_stock(vm_id, item_id):
+    quantity = request.json['quantity']
+    vm = VendingMachine.query.get(vm_id)
+    if vm:
+        item = Item.query.get(item_id)
+        if item:
+            if item.quantity - quantity < 0:
+                return jsonify({"error": "Not enough items in stock"}), 400
+            else:
+                item.quantity = item.quantity - quantity
+                db.session.commit()
+                return jsonify({"message": "Item removed from stock"}), 200
+        else:
+            return jsonify({"error": "Item not found"}), 404
+    else:
+        return jsonify({"error": "Vending machine not found"}), 404
+
+
 @app.route('/get_vending_machines_items/<int:vm_id>', methods=['GET'])
 def get_stock_by_vm(vm_id):
     vm = VendingMachine.query.get(vm_id)
@@ -113,10 +132,6 @@ def view_vm():
         vm_lst.append({'id': vm.id, 'name': vm.name, 'location': vm.location})
     return jsonify(vm_lst)
 
-
-if __name__ == '__main__':
-    db.create_all()
-    app.run(debug=True)
 
 if __name__ == '__main__':
     db.create_all()
