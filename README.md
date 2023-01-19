@@ -47,5 +47,5 @@ This API allows for creation, deletion, and management of vending machines aroun
 - Response `{"message": "Item stock updated successfully"}`
 ### Note
 - Replace <int:id>, <int:vm_id> and <int:item_id> with the actual id in the url when making requests
-- If any Vending Machine or Item is not found, API will return 404 with the messssage "Vending Machine not found" or "Item not found" respectively.
+- If any Vending Machine or Item is not found, API will return 404 with the message "Vending Machine not found" or "Item not found" respectively.
 
