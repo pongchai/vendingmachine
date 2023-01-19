@@ -4,7 +4,8 @@ This API allows for creation, deletion, and management of vending machines aroun
 ## Setup
 1. Clone the repository to your local machine 
 2. Install the required packages by running `pip install -r requirement.txt`.
-3. Run the app with `python3 app.py` or `python app.py`.
+3. Setup SQLite Database and Run SQL command found in SQLsetup.py
+4. Run the app with `python3 app.py` or `python app.py`.
 
 ### Endpoints 
 #### Create Vending Machine 
