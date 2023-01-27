@@ -1,4 +1,5 @@
- .tables
+-- execute the following for complete setup of the database
+.tables
  .schema vending_machine
  CREATE TABLE vending_machine (
          id INTEGER NOT NULL,
