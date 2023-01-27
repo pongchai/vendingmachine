@@ -3,54 +3,21 @@ This API allows for creation, deletion, and management of vending machines aroun
 
 ## Setup
 1. Clone the repository to your local machine 
-2. Install the required packages by running `pip install -r requirement.txt`.
+2. Install the required packages by running `pip3 install -r requirement.txt`.
 3. Setup SQLite Database and Execute SQL command found in SQLSetup.sql
-4. Run the app with `python3 app.py` or `python app.py`.
+4. Run the app with `python3 app.py`.
 
 ### Endpoints 
-#### Create Vending Machine 
-- Route `/create_vm`
-- Method: `POST`
-- Request Body: 
-
-`{
-    "name": "Vending Machine 1",
-    "location": "Room A334"
-}`
-- Response: 
-`{
-  "message": "Vending Machine created successfully"  
-}`
-
-#### Delete Vending Machine 
-- Route `/delete_vm/id`
-- Method: `DELETE`
-- Request Body:
-`{ "message" : "Vending Machine deleted successfully"
-}`
-
-#### Create Item
-- Route `/create_item/vm_id`
-- Method `POST`
-- Request Body:
-`{
-    "name": "Chips",
-    "price": 2.5,
-    "quantity": 10
-}`
-- Response: 
-`{ "message" : "Item created successfully" }`
-#### Add Item to Stock
-- Route `/add_item_to_stock/vm_id/item_id`
-- Method `PUT`
-- Request Body:
-`{"quantity" : 5}`
-- Response `{ "message", "Item stock added successfully"}`
-#### Edit Item Stock 
-- Route `/edit_item_stock/vm_id/item_id`
-- Method: `PUT`
-- Request Body: `{ "quantity": 5}`
-- Response `{"message": "Item stock updated successfully"}`
+### Vending Machine Endpoints
+- POST /vending-machines : creates a new vending machine.
+- DELETE /vending-machines/id> : deletes a vending machine by its ID.
+- GET /get_vending_machines : retrieves a list of all vending machines.
+### Item Endpoints
+- POST /create_item/id : creates a new item and assigns it to a vending machine by its ID.
+- PUT /add_item_stock/id/item_id : adds stock for a specific item in a specific vending machine.
+- PUT /edit_item_stock/id/item_id : edit stock for a specific item in a specific vending machine.
+- PUT /remove_item_from_stock/id/item_id : remove an item from stock for a specific vending machine.
+- GET /view_items_in_vending_machine/id : retrieve list of items in a specific vending machine.
 ### Note
 - Replace <int:id>, <int:vm_id> and <int:item_id> with the actual id in the url when making requests
 - If any Vending Machine or Item is not found, API will return 404 with the message "Vending Machine not found" or "Item not found" respectively.
