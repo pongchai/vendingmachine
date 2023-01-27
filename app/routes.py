@@ -15,7 +15,7 @@ def create_vm():
 
 
 # Delete vending machine
-def delete_vm(vm_id):
+def delete_vm(vm_id: int):
     vm = VendingMachine.query.get(vm_id)
     if not vm:
         return jsonify({"error": "Vending machine not found"}), 404
@@ -25,7 +25,7 @@ def delete_vm(vm_id):
 
 
 # Create item in vending machine
-def create_item(vm_id):
+def create_item(vm_id: int):
     try:
         name = request.json.get('name')
         price = request.json.get('price')
@@ -47,7 +47,7 @@ def create_item(vm_id):
 
 
 # Add product quantity to the vending machine
-def add_item_stock(vm_id, item_id):
+def add_item_stock(vm_id: int, item_id: int):
     try:
         quantity = request.json.get('quantity')
         vm = VendingMachine.query.get(vm_id)
@@ -64,7 +64,7 @@ def add_item_stock(vm_id, item_id):
 
 
 # Edit stock
-def edit_item_stock(vm_id, item_id):
+def edit_item_stock(vm_id: int, item_id: int):
     try:
         quantity = request.json.get('quantity')
         vm = VendingMachine.query.get(vm_id)
@@ -81,7 +81,7 @@ def edit_item_stock(vm_id, item_id):
 
 
 # Remove item
-def remove_item_from_stock(vm_id, item_id):
+def remove_item_from_stock(vm_id: int, item_id: int):
     try:
         quantity = request.json.get('quantity')
         vm = VendingMachine.query.get(vm_id)
@@ -100,7 +100,7 @@ def remove_item_from_stock(vm_id, item_id):
 
 
 # Get Item in Vending Machine by ID
-def get_stock_by_vm(vm_id):
+def get_stock_by_vm(vm_id: int):
     vm = VendingMachine.query.get(vm_id)
     if not vm:
         return jsonify({'message': 'Vending Machine not found, please call the correct ID'})
