@@ -3,14 +3,14 @@
  .schema vending_machine
  CREATE TABLE vending_machine (
          id INTEGER NOT NULL,
-         name VARCHAR(50),
-         location VARCHAR(50),
+         name VARCHAR2(50),
+         location VARCHAR2(50),
          PRIMARY KEY (id)
  );
  .schema item
  CREATE TABLE item (
          id INTEGER NOT NULL,
-         name VARCHAR(50),
+         name VARCHAR2(50),
          price FLOAT,
          quantity INTEGER,
          vending_machine_id INTEGER,
