@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "vendingmachine"
+version = "0.1.0"
+description = "REST API for vending machine management system wide"
+authors = ["Bom <pongchaihantapong@protonmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.7,<4.0"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.20.0"
+flake8 = "^5.0.1"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+ipykernel = "^6.15.1"
+flake8-annotations = "^2.9.1"
+flake8-eradicate = "^1.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

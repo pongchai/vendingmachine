@@ -16,4 +16,4 @@ curl -X PUT -H "Content-Type: application/json" -d '{"quantity": 5}' http://loca
 # Get All Vending Machine
 curl -X GET http://localhost:5000/get_vending_machines
 # Get All Stock Information By Vending Machine ID
-curl -X GET http://localhost:5000/get_vending_machines_items/1
+curl -X GET http://localhost:5000/view_items_in_vending_machine/1
