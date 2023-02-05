@@ -25,7 +25,7 @@ from app.models import Item, VendingMachine, db
 
 
 # Create a vending machine
-def create_vm() -> tuple[Response, int]:
+def create_vm():
     """Create a vending machine.
 
     Returns:
@@ -42,6 +42,7 @@ def create_vm() -> tuple[Response, int]:
     vm = VendingMachine(name=name, location=location)
     db.session.add(vm)
     db.session.commit()
+    # return vm.id
     return jsonify({"message": "Vending Machine created successfully"}), 201
 
 
@@ -65,7 +66,7 @@ def delete_vm(vm_id: int) -> tuple[Response, int]:
 
 
 # Create item in vending machine
-def create_item(vm_id: int) -> tuple[Response, int]:
+def create_item(vm_id: int):
     """Create an item in the vending machine stock.
 
     Args:
@@ -110,7 +111,7 @@ def create_item(vm_id: int) -> tuple[Response, int]:
 
 
 # Add product quantity to the vending machine
-def add_item_stock(vm_id: int, item_id: int) -> tuple[Response, int]:
+def add_item_stock(vm_id: int, item_id: int):
     """
     Add quantity to an item in the vending machine stock.
 
@@ -245,6 +246,21 @@ def view_vm() -> Response:
     return jsonify(vm_lst)
 
 
+# def get_last_vm() -> Response:
+#     """Get the last vending machine in the database and return it
+#     as a dictionary.
+
+#     Returns:
+#         A dictionary containing the vending machine id, name and location.
+#     """
+#     last_vm = VendingMachine.query.order_by(VendingMachine.id.desc()).first()
+#     if not last_vm:
+#         return jsonify({"message": "No Vending Machine found"})
+#     return jsonify(
+#         {"id": last_vm.id, "name": last_vm.name, "location": last_vm.location}
+#     )
+
+
 def add_routes(app: Flask) -> None:
     """
     Add routes to the Flask application.
@@ -283,3 +299,4 @@ def add_routes(app: Flask) -> None:
         methods=["GET"],
     )
     app.add_url_rule("/get_vending_machines", view_func=view_vm, methods=["GET"])
+    # app.add_url_rule("/get_last_vm", view_func=get_last_vm, methods=["GET"])

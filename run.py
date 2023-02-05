@@ -15,16 +15,22 @@ from app.routes import add_routes
 # Import the configuration
 from config import Config
 
-# Create the Flask application
-app = Flask(__name__)
 
-app.config["WTF_CSRF_ENABLED"] = False  # Sensitive
-app.config.from_object(Config)
-db.init_app(app)
+def create_app():
+    # Create the Flask application
+    app = Flask(__name__)
 
-# Add the routes to the application
-add_routes(app)
+    app.config["WTF_CSRF_ENABLED"] = False  # Sensitive
+    app.config.from_object(Config)
+    db.init_app(app)
 
-# Run the application
+    # Add the routes to the application
+    add_routes(app)
+
+    return app
+
+
+# If this file is run directly, run the application
 if __name__ == "__main__":
+    app = create_app()
     app.run()
